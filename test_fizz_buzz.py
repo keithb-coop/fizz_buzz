@@ -25,6 +25,10 @@ class TestTranslateNumber(unittest.TestCase):
         result = translate_number(5)
         self.assertEqual(result, 'Buzz')
 
+    def test_multiple_of_seven_returns_baz(self):
+        result = translate_number(7)
+        self.assertEqual(result, 'Baz')
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -7,4 +7,7 @@ def translate_number(number):
         return 'Fizz'
     if number == 5:
         return 'Buzz'
+    if number == 7:
+        return 'Baz'
+
     return number
