@@ -1,13 +1,9 @@
-def fizz_buzz():
-    return 0
-
-
-def translate_number(number):
-    if number == 3:
+def fizz_buzz(number):
+    if number % 3 == 0:
         return 'Fizz'
-    if number == 5:
+    if number % 5 == 0:
         return 'Buzz'
-    if number == 7:
+    if number % 7 == 0:
         return 'Baz'
 
     return number
