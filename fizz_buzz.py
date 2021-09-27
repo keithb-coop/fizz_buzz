@@ -6,5 +6,3 @@ def fizz_buzz(number):
                 7: (lambda n: "Baz")}
 
     return printers[max(divisors)](number)
-
-    return number
