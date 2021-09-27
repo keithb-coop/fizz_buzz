@@ -1,9 +1,10 @@
 def fizz_buzz(number):
-    if number % 3 == 0:
+    flags = {k : number % k == 0 for k in [3,5,7]}
+    if flags[3]:
         return 'Fizz'
-    if number % 5 == 0:
+    if flags[5]:
         return 'Buzz'
-    if number % 7 == 0:
+    if flags[7]:
         return 'Baz'
 
     return number
