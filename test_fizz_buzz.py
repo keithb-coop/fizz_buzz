@@ -6,7 +6,7 @@ from fizz_buzz import fizz_buzz
 class TestFizzBuzz(unittest.TestCase):
     def test_one_returns_one(self):
         result = fizz_buzz(1)
-        self.assertEqual(1, result)
+        self.assertEqual("1", result)
 
     def test_three_returns_fizz(self):
         result = fizz_buzz(3)
