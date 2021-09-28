@@ -1,8 +1,30 @@
-def fizz_buzz(number):
-    divisors = filter(lambda k: number % k == 0, [1,3,5,7])
-    printers = {1: (lambda n: n),
-                3: (lambda n: "Fizz"),
-                5: (lambda n: "Buzz"),
-                7: (lambda n: "Baz")}
+from collections import defaultdict
 
-    return printers[max(divisors)](number)
+
+def fizz_buzz(number):
+    justANumber = JustANumber()
+    baz  = StringANumber(7, "Baz", justANumber)
+    bar  = StringANumber(5, "Buzz", baz)
+    fizz = StringANumber(3, "Fizz", bar)
+
+    return fizz.stringThis(number,"")
+
+class StringANumber:
+    def __init__(self, mulitpleOf = None, stringToUse = None, next = None):
+        self.multipleOf = mulitpleOf
+        self.stringToUse = stringToUse
+        self.next = next
+
+    def stringThis(self, number, stringSoFar):
+        handlers = {1               : (lambda n: self.next.stringThis(n, stringSoFar)),
+                    self.multipleOf : (lambda n: self.stringToUse)}
+
+        divisors = filter(lambda k: number % k == 0, [1, self.multipleOf])
+        return handlers[max(divisors)](number)
+
+class JustANumber(StringANumber):
+    def __init__(self):
+        StringANumber.__init__(self)
+
+    def stringThis(self, number, stringSoFar):
+        return str(number)
