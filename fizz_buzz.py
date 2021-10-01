@@ -20,7 +20,7 @@ class StringANumber:
         handlers = {1: (lambda n: self.next.stringThis(n, stringSoFar)),
                     self.multipleOf: (lambda n: self.stringToUse)}
 
-        divisors = filter(lambda k: number % k == 0, [1, self.multipleOf])
+        divisors = [ n for n in [1, self.multipleOf] if number % n == 0]
         return handlers[max(divisors)](number)
 
 
