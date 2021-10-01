@@ -32,6 +32,9 @@ class TestFizzBuzz(unittest.TestCase):
         result = fizz_buzz(14)
         self.assertEqual('Baz', result)
 
+    def test_multiple_of_three_and_five_returns_fizzbuzz(self):
+        result = fizz_buzz(15)
+        self.assertEqual('FizzBuzz', result)
 
 if __name__ == "__main__":
     unittest.main()

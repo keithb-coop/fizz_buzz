@@ -18,15 +18,16 @@ class StringANumber:
 
     def stringThis(self, number, stringSoFar):
         handlers = {1: (lambda n: self.next.stringThis(n, stringSoFar)),
-                    self.multipleOf: (lambda n: self.stringToUse)}
+                    self.multipleOf: (lambda n: self.next.stringThis(n, stringSoFar + self.stringToUse))}
 
         divisors = [ n for n in [1, self.multipleOf] if number % n == 0]
         return handlers[max(divisors)](number)
 
 
-class JustANumber(StringANumber):
+class JustANumber():
     def __init__(self):
-        StringANumber.__init__(self)
+        self.handlers = defaultdict(lambda: (lambda n, stringSoFar: stringSoFar),
+                                    {0: (lambda n, stringSoFar: str(n))})
 
     def stringThis(self, number, stringSoFar):
-        return str(number)
+        return self.handlers[len(stringSoFar)](number, stringSoFar)
